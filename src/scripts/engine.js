@@ -62,7 +62,8 @@ async function getRandomCardId() {
 async function createCardImage(randomIdCard, fieldSide) {
     const cardImage = document.createElement("img");
     cardImage.setAttribute("height", "100px");
-    cardImage.setAttribute("src", "./src/assets/icons/card-back.png");
+    cardImage.setAttribute("src", fieldSide === state.playerSides.player1 ? cardData[randomIdCard].img : "./src/assets/icons/card-back.png");
+        
     cardImage.setAttribute("data-id", randomIdCard);
     cardImage.classList.add("card");
 
@@ -74,8 +75,7 @@ async function createCardImage(randomIdCard, fieldSide) {
         cardImage.addEventListener("mouseover", () => {
             drawSelectCard(randomIdCard);
         })
-    }
-
+    }        
     return cardImage;
 }
 
